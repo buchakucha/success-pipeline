@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		sh "ruby hello.rb"
+		sh "node hello.js"
             }
         }
         stage('Test') {
