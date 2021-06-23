@@ -1,11 +1,12 @@
 pipeline {
-    agent any
+  agent any
+  tools {nodejs "nodejs"}
   options { timestamps () }
   stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-		sh "node hello.js"
+		        sh "node hello.js"
             }
         }
         stage('Test') {
