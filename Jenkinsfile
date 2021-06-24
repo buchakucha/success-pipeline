@@ -1,22 +1,14 @@
 pipeline {
-  agent any
-  tools {nodejs "nodejs"}
-  options { timestamps () }
-  stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-		        sh "node hello.js"
-            }
+    agent {
+        docker {
+            image 'node:12' 
+            args '-p 3000:3000' 
         }
-        stage('Test') {
+    }
+    stages {
+        stage('Build') { 
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'node hello.js' 
             }
         }
     }
